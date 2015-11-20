@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include frappe_traceback_collector *.css
+recursive-include frappe_traceback_collector *.csv
+recursive-include frappe_traceback_collector *.html
+recursive-include frappe_traceback_collector *.ico
+recursive-include frappe_traceback_collector *.js
+recursive-include frappe_traceback_collector *.json
+recursive-include frappe_traceback_collector *.md
+recursive-include frappe_traceback_collector *.png
+recursive-include frappe_traceback_collector *.py
+recursive-include frappe_traceback_collector *.svg
+recursive-include frappe_traceback_collector *.txt
+recursive-exclude frappe_traceback_collector *.pyc
