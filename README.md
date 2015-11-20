@@ -10,7 +10,7 @@ Get detailed tracebacks is much more important than get a simple traceback, whil
 
 ## How to use?
 
-Usually `frappe_traceback_collector` will collect all tracebacks raised in the web context, whithout touch the error handling, thanks to `sys.excepthook`
+Usually `frappe_traceback_collector` will collect all tracebacks raised in the web context, without touch the error handling, thanks to `sys.excepthook`, just install it in the sites that do you want to collect the tracebacks
 
 Async tasks run in a different context, so for collect tracebacks in async context you need import the collector, and run your function inside a `try` statement, see the example 
 
