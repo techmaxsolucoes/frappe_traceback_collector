@@ -29,5 +29,5 @@ class Traceback(Document):
 			parent = parent[0]
 			self.update({"parent_traceback": parent['name']})
 			frappe.db.set_value('Traceback', parent['name'], 'relapses', parent["relapses"] + 1)
-			if not parent["seen"]:
-				frappe.db.set_value("Traceback", parent["name"], "seen", True)
+			if parent["seen"]:
+				frappe.db.set_value("Traceback", parent["name"], "seen", False)
