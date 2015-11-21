@@ -15,21 +15,17 @@ def collect_tickets():
 
 		for fname in os.listdir(path):
 			fullpath = os.path.join(path, fname)
+
 			with open(fullpath, 'rb') as fcontent:
 				data = json.load(fcontent)
 
-				doc = frappe.new_doc('Traceback')
-				loc = data.pop('locals')
-				exception = data.pop('exception')
-				frames = data.pop('frames')
+			for field in ['locals', 'exception', 'frames']:
+				data[field] = json.dumps(data[field])
 
-				doc.update(data)
-				doc.update({
-					'locals': json.dumps(loc),
-					'exception': json.dumps(exception),
-					'frames': json.dumps(frames)
-				})
-				doc.save()
+			doc = frappe.new_doc('Traceback')
+			
+			doc.update(data)
+			doc.save()
 
 			os.remove(fullpath)
 	
