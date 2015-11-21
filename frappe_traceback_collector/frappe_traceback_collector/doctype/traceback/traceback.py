@@ -23,9 +23,11 @@ class Traceback(Document):
 	def validate(self):
 		parent = frappe.get_list('Traceback', filters=[
 			['Traceback', 'evalue', '=', self.evalue],
-			['Traceback', 'parent_traceback', '=', None]], fields=["name", "relapses"])
+			['Traceback', 'parent_traceback', '=', None]], fields=["name", "relapses", "seen"])
 
 		if parent:
 			parent = parent[0]
 			self.update({"parent_traceback": parent['name']})
 			frappe.db.set_value('Traceback', parent['name'], 'relapses', parent["relapses"] + 1)
+			if not parent["seen"]:
+				frappe.db.set_value("Traceback", parent["name"], "seen", True)
