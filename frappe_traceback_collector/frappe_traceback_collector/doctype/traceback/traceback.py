@@ -8,6 +8,18 @@ import frappe
 from frappe.model.document import Document
 
 class Traceback(Document):
+	def onload(self):
+		if not self.parent_traceback:
+			self.seen = True
+			
+			frappe.db.set_value("Traceback", self.name, "seen", True)
+
+			for relapsed in frappe.db.get_list("Traceback", filters=[[
+				"Traceback", "parent_traceback", "=", self.name]]):
+				frappe.db.set_value("Traceback", relapsed["name"], "seen", True)
+
+			frappe.db.commit()
+
 	def validate(self):
 		parent = frappe.get_list('Traceback', filters=[
 			['Traceback', 'evalue', '=', self.evalue],

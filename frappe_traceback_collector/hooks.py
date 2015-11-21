@@ -10,6 +10,8 @@ app_color = "grey"
 app_email = "max.morais.dmm@gmail.com"
 app_version = "0.0.1"
 
+
+
 # Includes in <head>
 # ------------------
 
@@ -48,7 +50,7 @@ app_version = "0.0.1"
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "frappe_traceback_collector.notifications.get_notification_config"
+notification_config = "frappe_traceback_collector.notifications.get_notification_config"
 
 # Permissions
 # -----------
