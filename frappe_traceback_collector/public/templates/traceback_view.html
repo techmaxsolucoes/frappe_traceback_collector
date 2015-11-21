@@ -30,6 +30,7 @@
 </style>
 {% function id(){ return id._old_id++; }; id._old_id = 0; %}
 <h3>{{ __("Error Report") }}</h3>
+<p class="text-muted">{{ doc.pyver }}</p>
 <dl>
     <dt>{{ __("Timestamp") }}: </dt>
     <dd>{{ doc.timestamp }}</dd>
@@ -52,7 +53,7 @@
                 {% for (var index in frame.lines) { %}
                     {% var line = frame.lines[index] %}
                     <div class="line {{ index == frame.lnum ? "current": "" }}">
-                        <span class="lineno text-mutted">{{ index }}</span>
+                        <span class="lineno text-muted">{{ index }}</span>
                         <span class="code">{{ line }}</span>
                     </div>
                 {% } %}
@@ -72,5 +73,3 @@
     </div>
     </p>
 {% } %}
-
-
